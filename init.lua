@@ -27,6 +27,7 @@ require('packer').startup(function(use)
         ensure_installed = { "javascript", "typescript", "tsx", "json", "html", "css" },
         highlight = {
           enable = true,
+          disable = { "lua"},
         },
         indent = {
           enable = true,  -- 自動インデントのサポート
@@ -115,9 +116,6 @@ vim.cmd([[
 vim.g.mapleader = ','
 vim.api.nvim_set_keymap('n', '<leader>/', ':nohlsearch<CR>', { noremap = true, silent = true })
 
--- ビジュアルモードの選択範囲の色設定
-vim.cmd('highlight Visual ctermbg=darkmagenta ctermfg=black guibg=#9932cc guifg=#000000')
-
 -- coc.nvimの設定
 vim.cmd('let g:coc_global_extensions = ["coc-tsserver", "coc-eslint", "coc-prettier", "coc-json", "coc-html", "coc-css"]')
 
@@ -167,4 +165,9 @@ ibl.setup {
         highlight = "IblScope",
     },
 }
+
+
+-- ビジュアルモードの選択範囲の色設定
+vim.cmd('highlight Visual guibg=#000080 guifg=#FFFFFF ctermbg=darkblue ctermfg=white')
+
 
