@@ -5,7 +5,8 @@ cd nvim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-sudo apt update
-sudo apt install -y build-essential
+sudo apt update  
+sudo apt install -y build-essential  
+sudo apt install -y nodejs npm  
 nvim  
 :PackerSync
