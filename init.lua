@@ -1,3 +1,14 @@
+-- 基本設定
+vim.o.termguicolors = true  -- カラースキームを正しく表示するために追加
+vim.o.background = 'dark'
+vim.o.backspace = 'indent,eol,start'
+vim.o.number = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.clipboard = 'unnamedplus'
+vim.cmd('syntax enable')
+
 -- packer.nvim の初期設定
 vim.cmd [[packadd packer.nvim]]
 
@@ -25,10 +36,10 @@ require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "javascript", "typescript", "tsx", "json", "html", "css" },
+        ensure_installed = { "javascript", "typescript", "tsx", "json", "html", "css", "lua" },
         highlight = {
           enable = true,
-          disable = { "lua" },
+          additional_vim_regex_highlighting = true, -- Vimのシンタックスハイライトも併用
         },
         indent = {
           enable = true,  -- 自動インデントのサポート
@@ -103,20 +114,9 @@ require('packer').startup(function(use)
   })
 end)
 
--- 基本設定
-vim.o.termguicolors = true  -- カラースキームを正しく表示するために追加
-vim.o.background = 'dark'
-vim.o.backspace = 'indent,eol,start'
-vim.o.number = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.clipboard = 'unnamedplus'
-vim.cmd('syntax enable')
-
 -- TokyoNightカラースキームの設定
 require('tokyonight').setup({
-  style = "storm", -- 他に "night", "day" など。お好みで変更。
+  style = "storm",
   transparent = true,
   styles = {
     comments = { italic = false },
@@ -130,9 +130,23 @@ require('tokyonight').setup({
     colors.error = "#ff6666"
   end,
   on_highlights = function(hl, c)
-    hl.TSTag = { fg = c.yellow, bold = true }           -- HTMLタグの色
-    hl.TSTagDelimiter = { fg = c.blue }                 -- HTMLタグのデリミタの色
-    hl.TSAttribute = { fg = c.cyan, italic = true }     -- HTML属性の色
+    -- Treesitter用のハイライト
+    hl.TSTag = { fg = "#ff9e64", bold = true }             -- HTMLタグの色をオレンジに設定
+    hl.TSTagDelimiter = { fg = "#7aa2f7" }                 -- HTMLタグのデリミタ（<, >）の色を青色に
+    hl.TSAttribute = { fg = "#9ece6a", italic = true }     -- HTML属性の色を緑色に
+    hl.TSString = { fg = "#bb9af7" }                       -- 属性の値（例: hrefのURL）の色を紫に
+    hl.TSKeyword = { fg = "#f7768e", italic = true }       -- HTMLタグ内のキーワードや特定要素
+    hl.TSFunction = { fg = "#c0caf5" }                    -- JavaScript関数などの色を淡い青色に
+    hl.TSParameter = { fg = "#7dcfff" }                   -- パラメータや変数の色
+
+    -- vim標準のシンタックスハイライトを上書き
+    hl.htmlTag = { fg = "#ff9e64", bold = true }
+    hl.htmlEndTag = { fg = "#ff9e64", bold = true }
+    hl.htmlTagName = { fg = "#7aa2f7" }
+    hl.htmlArg = { fg = "#9ece6a", italic = true }
+    hl.htmlString = { fg = "#bb9af7" }
+    hl.htmlSpecialTagName = { fg = "#f7768e", italic = true }
+    hl.Comment = { fg = "#5f5f87", italic = true }         -- コメントの色を落ち着いた青紫に
   end,
 })
 
