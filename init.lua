@@ -15,12 +15,11 @@ require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
   use 'frazrepo/vim-rainbow'
   use 'jiangmiao/auto-pairs'
-
-  -- 'catppuccin' カラースキームを追加
-  use { "catppuccin/nvim", as = "catppuccin" }
+  
+  -- TokyoNightカラースキームを追加
+  use 'folke/tokyonight.nvim'
 
   -- Next.jsに関連するプラグイン
-  -- Treesitter: 高度なシンタックスハイライト
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -48,7 +47,7 @@ require('packer').startup(function(use)
   use 'MunifTanjim/eslint.nvim'
   use 'MunifTanjim/prettier.nvim'
 
-  -- Indentラインを表示するプラグイン (バージョン3対応)
+  -- Indentラインを表示するプラグイン
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -83,23 +82,8 @@ require('packer').startup(function(use)
           highlight = "IblScope",
         },
       }
-
-      -- カラースキーム変更時にハイライトを再定義
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "IndentLevel1", { fg = "#E06C75", nocombine = true })
-          vim.api.nvim_set_hl(0, "IndentLevel2", { fg = "#E5C07B", nocombine = true })
-          vim.api.nvim_set_hl(0, "IndentLevel3", { fg = "#98C379", nocombine = true })
-          vim.api.nvim_set_hl(0, "IndentLevel4", { fg = "#56B6C2", nocombine = true })
-          vim.api.nvim_set_hl(0, "IndentLevel5", { fg = "#61AFEF", nocombine = true })
-          vim.api.nvim_set_hl(0, "IndentLevel6", { fg = "#C678DD", nocombine = true })
-          vim.api.nvim_set_hl(0, "IblScope",    { fg = "#FFD700", nocombine = true })
-        end,
-      })
     end
   }
-
 end)
 
 -- 基本設定
@@ -113,20 +97,10 @@ vim.o.expandtab = true
 vim.o.clipboard = 'unnamedplus'
 vim.cmd('syntax enable')
 
--- 'catppuccin' の設定
-require("catppuccin").setup({
-  flavour = "macchiato", -- お好みで "latte", "frappe", "macchiato", "mocha" に変更可能
-  background = {
-    light = "latte",
-    dark = "mocha",
-  },
-  -- その他の設定があればここに追加
-})
+-- カラースキームをTokyoNightに設定
+vim.cmd('colorscheme tokyonight')
 
--- カラースキームを 'catppuccin' に設定
-vim.cmd('colorscheme catppuccin')
-
--- 背景を透明にする設定（必要に応じて）
+-- 背景を透明にする設定
 vim.cmd [[
   augroup TransparentBG
     autocmd!
