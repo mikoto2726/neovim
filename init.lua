@@ -50,18 +50,17 @@ require('packer').startup(function(use)
   -- Indentラインを表示するプラグイン
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function()
+      config = function()
       local ibl = require("ibl")
 
       -- ハイライトグループを定義
-      vim.api.nvim_set_hl(0, "IndentLevel1", { fg = "#E06C75", nocombine = true })
-      vim.api.nvim_set_hl(0, "IndentLevel2", { fg = "#E5C07B", nocombine = true })
-      vim.api.nvim_set_hl(0, "IndentLevel3", { fg = "#98C379", nocombine = true })
-      vim.api.nvim_set_hl(0, "IndentLevel4", { fg = "#56B6C2", nocombine = true })
-      vim.api.nvim_set_hl(0, "IndentLevel5", { fg = "#61AFEF", nocombine = true })
-      vim.api.nvim_set_hl(0, "IndentLevel6", { fg = "#C678DD", nocombine = true })
-      vim.api.nvim_set_hl(0, "IblScope",    { fg = "#FFD700", nocombine = true })
-
+      vim.api.nvim_set_hl(0, "IndentLevel1", { fg = "#205d96", nocombine = true })
+      vim.api.nvim_set_hl(0, "IndentLevel2", { fg = "#316aa1", nocombine = true })
+      vim.api.nvim_set_hl(0, "IndentLevel3", { fg = "#447aad", nocombine = true })
+      vim.api.nvim_set_hl(0, "IndentLevel4", { fg = "#5a8bb8", nocombine = true })
+      vim.api.nvim_set_hl(0, "IndentLevel5", { fg = "#729bc4", nocombine = true })
+      vim.api.nvim_set_hl(0, "IndentLevel6", { fg = "#8aaed0", nocombine = true })
+      vim.api.nvim_set_hl(0, "IblScope",    { fg = "#89a7d0", nocombine = true }) 
       -- プラグインの設定
       ibl.setup {
         indent = {
@@ -117,7 +116,7 @@ vim.cmd([[
   autocmd bufenter * if (winnr('$') == 1 && exists('t:NERDTreeBufName') && bufname(t:NERDTreeBufName) == bufname('%')) | quit | endif
 ]])
 vim.g.NERDTreeShowHidden = 1
-vim.cmd('highlight NERDTreeDir guifg=blue')
+vim.cmd('highlight NERDTreeDir guifg=1e90ff')      -- ディレクトリ名の色
 
 -- ALEの設定
 vim.g.ale_linters = {
