@@ -15,7 +15,9 @@ require('packer').startup(function(use)
   use 'airblade/vim-gitgutter'
   use 'frazrepo/vim-rainbow'
   use 'jiangmiao/auto-pairs'
-  use 'arcticicestudio/nord-vim'
+
+  -- 'catppuccin' カラースキームを追加
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Next.jsに関連するプラグイン
   -- Treesitter: 高度なシンタックスハイライト
@@ -111,10 +113,20 @@ vim.o.expandtab = true
 vim.o.clipboard = 'unnamedplus'
 vim.cmd('syntax enable')
 
--- カラースキームをnordに設定
-vim.cmd('colorscheme nord')
+-- 'catppuccin' の設定
+require("catppuccin").setup({
+  flavour = "macchiato", -- お好みで "latte", "frappe", "macchiato", "mocha" に変更可能
+  background = {
+    light = "latte",
+    dark = "mocha",
+  },
+  -- その他の設定があればここに追加
+})
 
--- 背景を透明にする設定
+-- カラースキームを 'catppuccin' に設定
+vim.cmd('colorscheme catppuccin')
+
+-- 背景を透明にする設定（必要に応じて）
 vim.cmd [[
   augroup TransparentBG
     autocmd!
@@ -177,6 +189,4 @@ vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {e
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', {expr = true, noremap = true})
 
--- ビジュアルモードの選択範囲の色設定
-vim.cmd('highlight Visual guibg=#000080 guifg=#FFFFFF ctermbg=darkblue ctermfg=white')
 
