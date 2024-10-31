@@ -19,7 +19,7 @@ require('packer').startup(function(use)
   -- TokyoNightカラースキームを追加
   use 'folke/tokyonight.nvim'
 
-  -- Next.jsに関連するプラグイン
+  -- Treesitter: 高度なシンタックスハイライト
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -28,7 +28,7 @@ require('packer').startup(function(use)
         ensure_installed = { "javascript", "typescript", "tsx", "json", "html", "css" },
         highlight = {
           enable = true,
-          disable = { "lua"},
+          disable = { "lua" },
         },
         indent = {
           enable = true,  -- 自動インデントのサポート
@@ -50,7 +50,7 @@ require('packer').startup(function(use)
   -- Indentラインを表示するプラグイン
   use {
     'lukas-reineke/indent-blankline.nvim',
-      config = function()
+    config = function()
       local ibl = require("ibl")
 
       -- ハイライトグループを定義
@@ -61,6 +61,7 @@ require('packer').startup(function(use)
       vim.api.nvim_set_hl(0, "IndentLevel5", { fg = "#729bc4", nocombine = true })
       vim.api.nvim_set_hl(0, "IndentLevel6", { fg = "#8aaed0", nocombine = true })
       vim.api.nvim_set_hl(0, "IblScope",    { fg = "#89a7d0", nocombine = true }) 
+      
       -- プラグインの設定
       ibl.setup {
         indent = {
@@ -83,6 +84,23 @@ require('packer').startup(function(use)
       }
     end
   }
+
+  -- nvim-colorizer.lua: カラーコードの可視化
+  use 'norcalli/nvim-colorizer.lua'
+  require('colorizer').setup({
+    'html',
+    'css',
+    'javascript',
+  }, { 
+    RGB = true, 
+    RRGGBB = true,
+    names = false, 
+    RRGGBBAA = true, 
+    rgb_fn = true, 
+    hsl_fn = true, 
+    css = true,
+    css_fn = true, 
+  })
 end)
 
 -- 基本設定
@@ -96,7 +114,28 @@ vim.o.expandtab = true
 vim.o.clipboard = 'unnamedplus'
 vim.cmd('syntax enable')
 
--- カラースキームをTokyoNightに設定
+-- TokyoNightカラースキームの設定
+require('tokyonight').setup({
+  style = "storm", -- 他に "night", "day" など。お好みで変更。
+  transparent = true,
+  styles = {
+    comments = { italic = false },
+    keywords = { italic = false },
+    functions = {},
+    variables = {},
+    sidebars = "dark",
+  },
+  on_colors = function(colors)
+    colors.hint = colors.orange
+    colors.error = "#ff6666"
+  end,
+  on_highlights = function(hl, c)
+    hl.TSTag = { fg = c.yellow, bold = true }           -- HTMLタグの色
+    hl.TSTagDelimiter = { fg = c.blue }                 -- HTMLタグのデリミタの色
+    hl.TSAttribute = { fg = c.cyan, italic = true }     -- HTML属性の色
+  end,
+})
+
 vim.cmd('colorscheme tokyonight')
 
 -- 背景を透明にする設定
@@ -161,5 +200,4 @@ vim.cmd('let g:coc_global_extensions = ["coc-tsserver", "coc-eslint", "coc-prett
 vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', {expr = true, noremap = true})
-
 
