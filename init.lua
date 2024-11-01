@@ -178,6 +178,10 @@ vim.g.NERDTreeShowIcons = 1  -- アイコンを表示
 vim.g.NERDTreeShowHidden = 1
 vim.g.webdevicons_enable = 1  -- webdeviconsを有効化
 vim.g.DevIconsEnableFoldersOpenClose = 1  -- フォルダの開閉アイコンを有効化
+-- vim-deviconsの設定
+vim.g.WebDevIconsNerdTreeNodeDelimiter = ''  -- デリミタを空に設定
+vim.g.WebDevIconsNerdTreeBeforeGlyphPadding = ''  -- アイコンの前のパディングを削除
+vim.g.WebDevIconsNerdTreeAfterGlyphPadding = ' '  -- アイコンの後にスペースを追加
 
 
 
