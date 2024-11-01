@@ -1,4 +1,3 @@
--- 基本設定
 vim.o.termguicolors = true  -- カラースキームを正しく表示するために追加
 vim.o.background = 'dark'
 vim.o.backspace = 'indent,eol,start'
@@ -18,6 +17,8 @@ require('packer').startup(function(use)
   -- プラグインの定義
   use 'preservim/nerdtree'
   use 'Xuyuanp/nerdtree-git-plugin'
+  use 'kyazdani42/nvim-web-devicons'  -- アイコン表示用
+  use 'ryanoasis/vim-devicons'  -- NERDTreeでアイコンを表示
   use 'dense-analysis/ale'
   use 'itchyny/lightline.vim'  -- lightlineのプラグイン
   use 'honza/vim-snippets'
@@ -36,7 +37,8 @@ require('packer').startup(function(use)
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
-        ensure_installed = { "javascript", "typescript", "tsx", "json", "html", "css", "lua" },
+        ensure_installed = "all",  -- 全ての言語に対応
+        ignore_install = { "fortran" },  -- Fortranのインストールを無視
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = true, -- Vimのシンタックスハイライトも併用
@@ -130,23 +132,20 @@ require('tokyonight').setup({
     colors.error = "#ff6666"
   end,
   on_highlights = function(hl, c)
-    -- Treesitter用のハイライト
-    hl.TSTag = { fg = "#ff9e64", bold = true }             -- HTMLタグの色をオレンジに設定
-    hl.TSTagDelimiter = { fg = "#7aa2f7" }                 -- HTMLタグのデリミタ（<, >）の色を青色に
-    hl.TSAttribute = { fg = "#9ece6a", italic = true }     -- HTML属性の色を緑色に
-    hl.TSString = { fg = "#bb9af7" }                       -- 属性の値（例: hrefのURL）の色を紫に
-    hl.TSKeyword = { fg = "#f7768e", italic = true }       -- HTMLタグ内のキーワードや特定要素
-    hl.TSFunction = { fg = "#c0caf5" }                    -- JavaScript関数などの色を淡い青色に
-    hl.TSParameter = { fg = "#7dcfff" }                   -- パラメータや変数の色
-
-    -- vim標準のシンタックスハイライトを上書き
+    hl.TSTag = { fg = "#ff9e64", bold = true }
+    hl.TSTagDelimiter = { fg = "#7aa2f7" }
+    hl.TSAttribute = { fg = "#9ece6a", italic = true }
+    hl.TSString = { fg = "#bb9af7" }
+    hl.TSKeyword = { fg = "#f7768e", italic = true }
+    hl.TSFunction = { fg = "#c0caf5" }
+    hl.TSParameter = { fg = "#7dcfff" }
     hl.htmlTag = { fg = "#ff9e64", bold = true }
     hl.htmlEndTag = { fg = "#ff9e64", bold = true }
     hl.htmlTagName = { fg = "#7aa2f7" }
     hl.htmlArg = { fg = "#9ece6a", italic = true }
     hl.htmlString = { fg = "#bb9af7" }
     hl.htmlSpecialTagName = { fg = "#f7768e", italic = true }
-    hl.Comment = { fg = "#5f5f87", italic = true }         -- コメントの色を落ち着いた青紫に
+    hl.Comment = { fg = "#5f5f87", italic = true }
   end,
 })
 
@@ -162,14 +161,27 @@ vim.cmd [[
   augroup END
 ]]
 
--- NERDTreeのショートカット設定
+-- nvim-web-deviconsの設定
+require('nvim-web-devicons').setup {
+  default = true;
+  -- 追加の設定が必要であればここに書きます
+}
+
+
+-- NERDTreeの設定
 vim.api.nvim_set_keymap('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 vim.cmd([[
   autocmd VimEnter * NERDTree
   autocmd bufenter * if (winnr('$') == 1 && exists('t:NERDTreeBufName') && bufname(t:NERDTreeBufName) == bufname('%')) | quit | endif
 ]])
+vim.g.NERDTreeShowIcons = 1  -- アイコンを表示
 vim.g.NERDTreeShowHidden = 1
-vim.cmd('highlight NERDTreeDir guifg=1e90ff')      -- ディレクトリ名の色
+vim.g.webdevicons_enable = 1  -- webdeviconsを有効化
+vim.g.DevIconsEnableFoldersOpenClose = 1  -- フォルダの開閉アイコンを有効化
+
+
+
+
 
 -- ALEの設定
 vim.g.ale_linters = {
@@ -214,4 +226,5 @@ vim.cmd('let g:coc_global_extensions = ["coc-tsserver", "coc-eslint", "coc-prett
 vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', {expr = true, noremap = true})
+
 
