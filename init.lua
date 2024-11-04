@@ -185,8 +185,6 @@ vim.g.WebDevIconsNerdTreeAfterGlyphPadding = ' '  -- アイコンの後にスペ
 
 
 
-
-
 -- ALEの設定
 vim.g.ale_linters = {
   python = {'flake8', 'pylint'},
@@ -231,4 +229,7 @@ vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {e
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', {expr = true, noremap = true})
 
+-- jj と kk を押すとインサートモードから抜けて保存
+vim.keymap.set("i", "jj", "<esc>l<cmd>w<CR>")
+vim.keymap.set("i", "kk", "<esc>l<cmd>w<CR>")
 
