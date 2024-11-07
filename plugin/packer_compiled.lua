@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/kali/.cache/nvim/packer_hererocks/2.1.1723681758/share/lua/5.1/?.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1723681758/share/lua/5.1/?/init.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1723681758/lib/luarocks/rocks-5.1/?.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1723681758/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/kali/.cache/nvim/packer_hererocks/2.1.1723681758/lib/lua/5.1/?.so"
+local package_path_str = "/home/kali/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/home/kali/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/kali/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -105,10 +105,16 @@ _G.packer_plugins = {
     url = "https://github.com/junegunn/fzf.vim"
   },
   ["indent-blankline.nvim"] = {
-    config = { "\27LJ\2\nÚ\5\0\0\6\0\27\0>6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\5\0005\5\6\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\a\0005\5\b\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\t\0005\5\n\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\v\0005\5\f\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\r\0005\5\14\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\15\0005\5\16\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\17\0005\5\18\0B\1\4\0019\1\19\0005\3\23\0005\4\20\0005\5\21\0=\5\22\4=\4\24\0035\4\25\0=\4\26\3B\1\2\1K\0\1\0\nscope\1\0\4\rshow_end\2\15show_start\2\fenabled\2\14highlight\rIblScope\vindent\1\0\2\nscope\0\vindent\0\14highlight\1\a\0\0\17IndentLevel1\17IndentLevel2\17IndentLevel3\17IndentLevel4\17IndentLevel5\17IndentLevel6\1\0\2\14highlight\0\tchar\b‚îÇ\nsetup\1\0\2\afg\f#89a7d0\14nocombine\2\rIblScope\1\0\2\afg\f#8aaed0\14nocombine\2\17IndentLevel6\1\0\2\afg\f#729bc4\14nocombine\2\17IndentLevel5\1\0\2\afg\f#5a8bb8\14nocombine\2\17IndentLevel4\1\0\2\afg\f#447aad\14nocombine\2\17IndentLevel3\1\0\2\afg\f#316aa1\14nocombine\2\17IndentLevel2\1\0\2\afg\f#205d96\14nocombine\2\17IndentLevel1\16nvim_set_hl\bapi\bvim\bibl\frequire\0" },
+    config = { "\27LJ\2\nÚ\5\0\0\6\0\27\0>6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\5\0005\5\6\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\a\0005\5\b\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\t\0005\5\n\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\v\0005\5\f\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\r\0005\5\14\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\15\0005\5\16\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\17\0005\5\18\0B\1\4\0019\1\19\0005\3\23\0005\4\20\0005\5\21\0=\5\22\4=\4\24\0035\4\25\0=\4\26\3B\1\2\1K\0\1\0\nscope\1\0\4\rshow_end\2\15show_start\2\fenabled\2\14highlight\rIblScope\vindent\1\0\2\vindent\0\nscope\0\14highlight\1\a\0\0\17IndentLevel1\17IndentLevel2\17IndentLevel3\17IndentLevel4\17IndentLevel5\17IndentLevel6\1\0\2\14highlight\0\tchar\b‚îÇ\nsetup\1\0\2\afg\f#89a7d0\14nocombine\2\rIblScope\1\0\2\afg\f#8aaed0\14nocombine\2\17IndentLevel6\1\0\2\afg\f#729bc4\14nocombine\2\17IndentLevel5\1\0\2\afg\f#5a8bb8\14nocombine\2\17IndentLevel4\1\0\2\afg\f#447aad\14nocombine\2\17IndentLevel3\1\0\2\afg\f#316aa1\14nocombine\2\17IndentLevel2\1\0\2\afg\f#205d96\14nocombine\2\17IndentLevel1\16nvim_set_hl\bapi\bvim\bibl\frequire\0" },
     loaded = true,
     path = "/home/kali/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["jupytext.vim"] = {
+    config = { "\27LJ\2\n9\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\15py:percent\17jupytext_fmt\6g\bvim\0" },
+    loaded = true,
+    path = "/home/kali/.local/share/nvim/site/pack/packer/start/jupytext.vim",
+    url = "https://github.com/goerz/jupytext.vim"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -131,7 +137,7 @@ _G.packer_plugins = {
     url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\nü\2\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tfold\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\19ignore_install\1\2\0\0\ffortran\1\0\5\21ensure_installed\ball\14highlight\0\tfold\0\vindent\0\19ignore_install\0\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\nü\2\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tfold\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\19ignore_install\1\2\0\0\ffortran\1\0\5\14highlight\0\19ignore_install\0\21ensure_installed\ball\vindent\0\tfold\0\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/home/kali/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -181,11 +187,15 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\2\nÚ\5\0\0\6\0\27\0>6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\5\0005\5\6\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\a\0005\5\b\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\t\0005\5\n\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\v\0005\5\f\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\r\0005\5\14\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\15\0005\5\16\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\17\0005\5\18\0B\1\4\0019\1\19\0005\3\23\0005\4\20\0005\5\21\0=\5\22\4=\4\24\0035\4\25\0=\4\26\3B\1\2\1K\0\1\0\nscope\1\0\4\rshow_end\2\15show_start\2\fenabled\2\14highlight\rIblScope\vindent\1\0\2\nscope\0\vindent\0\14highlight\1\a\0\0\17IndentLevel1\17IndentLevel2\17IndentLevel3\17IndentLevel4\17IndentLevel5\17IndentLevel6\1\0\2\14highlight\0\tchar\b‚îÇ\nsetup\1\0\2\afg\f#89a7d0\14nocombine\2\rIblScope\1\0\2\afg\f#8aaed0\14nocombine\2\17IndentLevel6\1\0\2\afg\f#729bc4\14nocombine\2\17IndentLevel5\1\0\2\afg\f#5a8bb8\14nocombine\2\17IndentLevel4\1\0\2\afg\f#447aad\14nocombine\2\17IndentLevel3\1\0\2\afg\f#316aa1\14nocombine\2\17IndentLevel2\1\0\2\afg\f#205d96\14nocombine\2\17IndentLevel1\16nvim_set_hl\bapi\bvim\bibl\frequire\0", "config", "indent-blankline.nvim")
+try_loadstring("\27LJ\2\nÚ\5\0\0\6\0\27\0>6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\5\0005\5\6\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\a\0005\5\b\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\t\0005\5\n\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\v\0005\5\f\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\r\0005\5\14\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\15\0005\5\16\0B\1\4\0016\1\2\0009\1\3\0019\1\4\1)\3\0\0'\4\17\0005\5\18\0B\1\4\0019\1\19\0005\3\23\0005\4\20\0005\5\21\0=\5\22\4=\4\24\0035\4\25\0=\4\26\3B\1\2\1K\0\1\0\nscope\1\0\4\rshow_end\2\15show_start\2\fenabled\2\14highlight\rIblScope\vindent\1\0\2\vindent\0\nscope\0\14highlight\1\a\0\0\17IndentLevel1\17IndentLevel2\17IndentLevel3\17IndentLevel4\17IndentLevel5\17IndentLevel6\1\0\2\14highlight\0\tchar\b‚îÇ\nsetup\1\0\2\afg\f#89a7d0\14nocombine\2\rIblScope\1\0\2\afg\f#8aaed0\14nocombine\2\17IndentLevel6\1\0\2\afg\f#729bc4\14nocombine\2\17IndentLevel5\1\0\2\afg\f#5a8bb8\14nocombine\2\17IndentLevel4\1\0\2\afg\f#447aad\14nocombine\2\17IndentLevel3\1\0\2\afg\f#316aa1\14nocombine\2\17IndentLevel2\1\0\2\afg\f#205d96\14nocombine\2\17IndentLevel1\16nvim_set_hl\bapi\bvim\bibl\frequire\0", "config", "indent-blankline.nvim")
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: jupytext.vim
+time([[Config for jupytext.vim]], true)
+try_loadstring("\27LJ\2\n9\0\0\2\0\4\0\0056\0\0\0009\0\1\0'\1\3\0=\1\2\0K\0\1\0\15py:percent\17jupytext_fmt\6g\bvim\0", "config", "jupytext.vim")
+time([[Config for jupytext.vim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\nü\2\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tfold\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\19ignore_install\1\2\0\0\ffortran\1\0\5\21ensure_installed\ball\14highlight\0\tfold\0\vindent\0\19ignore_install\0\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\nü\2\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tfold\1\0\1\venable\2\vindent\1\0\1\venable\2\14highlight\1\0\2&additional_vim_regex_highlighting\2\venable\2\19ignore_install\1\2\0\0\ffortran\1\0\5\14highlight\0\19ignore_install\0\21ensure_installed\ball\vindent\0\tfold\0\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
 
 _G._packer.inside_compile = false

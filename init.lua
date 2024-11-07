@@ -114,6 +114,14 @@ require('packer').startup(function(use)
     css = true,
     css_fn = true, 
   })
+
+  use {
+        'goerz/jupytext.vim',
+        config = function()
+            vim.g.jupytext_fmt = 'py:percent'  -- Pythonファイルに変換する形式を設定
+        end
+    }
+ 
 end)
 
 -- TokyoNightカラースキームの設定
@@ -232,4 +240,5 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\
 -- jj と kk を押すとインサートモードから抜けて保存
 vim.keymap.set("i", "jj", "<esc>l<cmd>w<CR>")
 vim.keymap.set("i", "kk", "<esc>l<cmd>w<CR>")
+
 
