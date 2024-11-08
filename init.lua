@@ -19,7 +19,6 @@ require('packer').startup(function(use)
   use 'Xuyuanp/nerdtree-git-plugin'
   use 'kyazdani42/nvim-web-devicons'  -- アイコン表示用
   use 'ryanoasis/vim-devicons'  -- NERDTreeでアイコンを表示
-  use 'dense-analysis/ale'
   use 'itchyny/lightline.vim'  -- lightlineのプラグイン
   use 'honza/vim-snippets'
   use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
@@ -192,17 +191,6 @@ vim.g.WebDevIconsNerdTreeBeforeGlyphPadding = ''  -- アイコンの前のパデ
 vim.g.WebDevIconsNerdTreeAfterGlyphPadding = ' '  -- アイコンの後にスペースを追加
 
 
-
--- ALEの設定
-vim.g.ale_linters = {
-  python = {'flake8', 'pylint'},
-  c = {'gcc'}
-}
-vim.g.ale_fixers = {
-  python = {'autopep8', 'yapf'}
-}
-vim.g.ale_python_flake8_options = '--max-line-length=88'
-vim.g.ale_fix_on_save = 1  -- 保存時に自動フォーマット
 
 -- Fzfのショートカット設定
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
