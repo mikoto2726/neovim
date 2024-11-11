@@ -1,12 +1,12 @@
 vim.o.termguicolors = true  -- カラースキームを正しく表示するために追加
-vim.o.background = 'dark'
-vim.o.backspace = 'indent,eol,start'
-vim.o.number = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.clipboard = 'unnamedplus'
-vim.cmd('syntax enable')
+vim.o.background = 'dark' -- 背景をダークに設定
+vim.o.backspace = 'indent,eol,start' -- インデント、行末、行頭でバックスペースを有効化
+vim.o.number = true -- 行番号を表示
+vim.o.tabstop = 4 -- タブの幅を4に設定
+vim.o.shiftwidth = 4 -- シフト幅を4に設定
+vim.o.expandtab = true -- タブをスペースに変換
+vim.o.clipboard = 'unnamedplus' -- クリップボードを有効化
+vim.cmd('syntax enable') -- シンタックスハイライトを有効化
 
 -- packer.nvim の初期設定
 vim.cmd [[packadd packer.nvim]]
@@ -120,6 +120,13 @@ require('packer').startup(function(use)
             vim.g.jupytext_fmt = 'py:percent'  -- Pythonファイルに変換する形式を設定
         end
     }
+  
+  -- Markdownプレビューのプラグイン
+  use { 
+    'iamcco/markdown-preview.nvim', 
+    run = 'cd app && npm install',
+    ft = { 'markdown' }
+  }
  
 end)
 
