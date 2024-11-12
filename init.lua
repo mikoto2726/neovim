@@ -236,4 +236,10 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\
 vim.keymap.set("i", "jj", "<esc>l<cmd>w<CR>")
 vim.keymap.set("i", "kk", "<esc>l<cmd>w<CR>")
 
+-- :terminal で、iモード（挿入モード）からノーマルモードに戻るための設定
+vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', 'kk', '<C-\\><C-n>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+
 
