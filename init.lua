@@ -58,7 +58,7 @@ require('packer').startup(function(use)
   -- eslintとprettierによるリントとフォーマット
   use 'MunifTanjim/eslint.nvim'
   use 'MunifTanjim/prettier.nvim'
-
+   
   -- Indentラインを表示するプラグイン
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -127,7 +127,8 @@ require('packer').startup(function(use)
     run = 'cd app && npm install',
     ft = { 'markdown' }
   }
- 
+
+  use 'neovim/nvim-lspconfig'
 end)
 
 -- TokyoNightカラースキームの設定
@@ -241,5 +242,20 @@ vim.api.nvim_set_keymap('t', 'jj', '<C-\\><C-n>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('t', 'kk', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
+-- フォーマットの設定を追加
+require('prettier').setup({
+  bin = 'prettier',
+  filetypes = { "javascript", "typescript", "html", "css", "json", "markdown" }
+})
+
+-- 保存時に自動フォーマット
+vim.cmd([[
+  autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx,*.json,*.html,*.css,*.md PrettierAsync
+  autocmd BufWritePre *.py lua vim.lsp.buf.format()
+]])
+
+-- coc.nvim のフォーマットショートカット
+vim.api.nvim_set_keymap('n', '<leader>f', ':CocCommand prettier.formatFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':CocCommand eslint.executeAutofix<CR>', { noremap = true, silent = true })
 
 
